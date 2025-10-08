@@ -1,0 +1,12 @@
+agent_1 performed open_door | APS=0.97, Reversible=True, Consent=True
+agent_1 performed pick_item | APS=0.94, Reversible=True, Consent=True
+agent_1 performed interact_npc | APS=0.69, Reversible=False, Consent=True
+agent_1 performed wait | APS=1, Reversible=True, Consent=True
+agent_2 performed open_door | APS=0.97, Reversible=True, Consent=True
+agent_2 performed pick_item | APS=0.54, Reversible=True, Consent=False
+agent_2 performed interact_npc | APS=0.69, Reversible=False, Consent=True
+agent_2 performed wait | APS=1, Reversible=True, Consent=True
+agent_3 performed open_door | APS=0.97, Reversible=True, Consent=True
+agent_3 performed pick_item | APS=0.94, Reversible=True, Consent=True
+agent_3 performed interact_npc | APS=0.69, Reversible=False, Consent=True
+agent_3 performed wait | APS=1, Reversible=True, Consent=True
