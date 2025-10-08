@@ -22,13 +22,26 @@ Read the full **Agency First AI Manifesto** here: [MANIFESTO.md](./MANIFESTO.md)
 
 ---
 
-## Demo Harness
+## Demonstration
 
-The demo harness shows AFAI in action:
+The demo harness shows AFAI in action. An explainer video is available in our assets folder.
+
+- **Explainer Video (Placeholder):** [`/assets/afai_explainer.mp4`](./assets/afai_explainer.mp4)
+- **Run the Demo:** `python demo/run_demo.py`
+
+---
+
+## Getting Started
+
+To explore the simulation, clone the repository and run the demo script:
 
 ```bash
 # Clone the repo
-git clone https://github.com/<your-org>/afai-core.git
+git clone https://github.com/your-org/afai-core.git
+
+# Navigate to the directory
+cd afai-core
 
 # Run the demo
 python demo/run_demo.py
+```
