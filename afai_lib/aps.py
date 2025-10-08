@@ -65,3 +65,47 @@ def calculate_weighted_aps(factors, weights):
     final_score = (normalized_score + 1) / 2
 
     return max(0, min(1, round(final_score, 2)))
+
+def generate_aps_report(results):
+    """
+    Generates a text-based report of Agency Preservation Scores (APS).
+
+    Args:
+        results (list): A list of dictionaries, where each dictionary contains the following keys:
+                        'agent_id', 'action', 'aps_score', 'reversible', 'consent'.
+
+    Returns:
+        str: A formatted string containing the APS report.
+    """
+    report = """--- AFAI Agency Preservation Score (APS) Report ---
+
+"""
+    report += "{:<10} {:<15} {:<10} {:<12} {:<10}\n".format("Agent ID", "Action", "APS Score", "Reversible", "Consent")
+    report += "-" * 60 + "\n"
+
+    for result in results:
+        report += "{:<10} {:<15} {:<10.2f} {:<12} {:<10}\n".format(
+            result['agent_id'],
+            result['action'],
+            result['aps_score'],
+            str(result['reversible']),
+            str(result['consent'])
+        )
+
+    report += "\n--- End of Report ---\n"
+    return report
+
+def calculate_custom_aps(factors, calculation_function):
+    """
+    Calculates the Agency Preservation Score (APS) using a custom, user-defined function.
+
+    Args:
+        factors (dict): A dictionary of factors to be used in the calculation.
+        calculation_function (function): A function that takes a dictionary of factors as input
+                                         and returns the APS score (a float between 0.0 and 1.0).
+
+    Returns:
+        float: The Agency Preservation Score (APS) between 0.0 and 1.0.
+    """
+    aps_score = calculation_function(factors)
+    return max(0, min(1, round(aps_score, 2)))
