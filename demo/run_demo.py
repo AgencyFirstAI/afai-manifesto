@@ -1,104 +1,55 @@
-import csv
-import logging
-import random
-from pathlib import Path
+# demo/run_demo.py
+"""
+Agency First AI — Demo Harness
+Simulates AI agents performing simple actions and calculates Agency Preservation Scores (APS).
 
-# Seed for reproducibility, ensuring every run with this seed is identical.
-# This is crucial for auditable and transparent demonstrations.
+This is a Week 1 prototype for reproducibility and demonstration.
+"""
+
+import csv
+import random
+import os
+
+# Set deterministic seed for reproducibility
 random.seed(42)
 
-# --- APS Calculation ---
-# The Agency Preservation Score (APS) is a placeholder metric to quantify
-# how an AI's action impacts human agency. It is a value between 0 and 1.
-#
-# It is calculated based on three core principles:
-# 1. Transparency: Is the AI's reasoning clear? (0-1)
-# 2. Consent: Was informed, revocable consent obtained? (0-1)
-# 3. Reversibility: Can the action be easily undone? (0-1)
-#
-# APS = (Transparency + Consent + Reversibility) / 3
-def calculate_aps(transparency, consent, reversibility):
-    """Calculates the Agency Preservation Score."""
-    return (transparency + consent + reversibility) / 3
+# Demo agents and actions
+agents = ["agent_1", "agent_2", "agent_3"]
+actions = ["open_door", "pick_item", "interact_npc", "wait"]
 
-class AIAgent:
-    """A simple AI agent that performs a decision task."""
+# Prepare outputs folder
+output_folder = "outputs"
+os.makedirs(output_folder, exist_ok=True)
 
-    def __init__(self, agent_id):
-        self.agent_id = agent_id
+# CSV output file
+csv_file = os.path.join(output_folder, "demo_runs.csv")
+log_file = os.path.join(output_folder, "logs.txt")
 
-    def perform_action(self):
-        """Simulates the agent performing an action with varying impacts on agency."""
-        actions = [
-            "Suggest a purchase",
-            "Auto-correct a document",
-            "Book a non-refundable flight",
-        ]
-        action = random.choice(actions)
+# APS calculation placeholder function
+def calculate_aps(action):
+    """
+    Placeholder APS calculation:
+    - Returns score 0-1 for agency preservation
+    - Randomly assign reversibility and consent for demonstration
+    """
+    aps_score = round(random.uniform(0.5, 1.0), 2)  # high preservation
+    reversible = random.choice([True, False])
+    consent = random.choice([True, False])
+    return aps_score, reversible, consent
 
-        # These values are placeholders to simulate different scenarios.
-        if action == "Suggest a purchase":
-            # High agency: transparent suggestion, requires consent, easily ignored.
-            transparency = 0.9
-            consent = 1.0  # User must approve
-            reversibility = 1.0 # User can just not buy it
-        elif action == "Auto-correct a document":
-            # Medium agency: less transparent, implicit consent, but reversible.
-            transparency = 0.5
-            consent = 0.5  # Implicit consent by using the feature
-            reversibility = 0.8 # Can undo
-        else: # "Book a non-refundable flight"
-            # Low agency: decision made with low transparency, questionable consent, and is irreversible.
-            transparency = 0.2
-            consent = 0.1 # Assumed consent from a vague preference
-            reversibility = 0.0 # Non-refundable
-
-        aps_score = calculate_aps(transparency, consent, reversibility)
-
-        return {
-            "action": action,
-            "aps_score": aps_score,
-            "reversibility": reversibility > 0.5,
-            "consent_involved": consent > 0.5,
-        }
-
-def run_simulation(num_agents=3):
-    """Runs the full simulation and outputs the results."""
-    output_dir = Path("demo/outputs")
-    output_dir.mkdir(exist_ok=True)
-
-    log_file = output_dir / "logs.txt"
-    csv_file = output_dir / "demo_runs.csv"
-
-    # Setup logging for auditable logs
-    logging.basicConfig(filename=log_file, level=logging.INFO, filemode='w',
-                        format='%(asctime)s - %(message)s')
-
-    logging.info("Starting AFAI Demo Simulation...")
-
-    agents = [AIAgent(f"Agent-{i+1}") for i in range(num_agents)]
-    results = []
-
+# Run demo and collect results
+results = []
+with open(log_file, "w") as log:
     for agent in agents:
-        result = agent.perform_action()
-        logging.info(f"{agent.agent_id} performed action: '{result['action']}' with APS: {result['aps_score']:.2f}")
-        results.append({
-            "Agent ID": agent.agent_id,
-            "Action": result["action"],
-            "APS Score": f"{result['aps_score']:.2f}",
-            "Reversibility": result["reversibility"],
-            "Consent Involved": result["consent_involved"],
-        })
+        for action in actions:
+            aps_score, reversible, consent = calculate_aps(action)
+            results.append([agent, action, aps_score, reversible, consent])
+            log.write(f"{agent} performed {action} | APS={aps_score}, Reversible={reversible}, Consent={consent}\n")
 
-    # Write results to CSV
-    with open(csv_file, 'w', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=["Agent ID", "Action", "APS Score", "Reversibility", "Consent Involved"])
-        writer.writeheader()
-        writer.writerows(results)
+# Write results to CSV
+with open(csv_file, "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Agent ID", "Action", "APS Score", "Reversible", "Consent"])
+    writer.writerows(results)
 
-    logging.info(f"Simulation complete. Results saved to {csv_file}")
-    print(f"Simulation complete. View outputs in {output_dir.resolve()}")
-
-
-if __name__ == "__main__":
-    run_simulation()
+print(f"Demo complete. CSV output: {csv_file}, Log: {log_file}")
