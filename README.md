@@ -36,7 +36,7 @@ Your website should be live at the URL provided above within a few minutes.
 
 ## Manifesto
 
-Read the full **Agency First AI Manifesto** here: [MANIFESTO.md](./MANIFESTO.md)  
+Read the full **Agency First AI Manifesto** here: [MANIFESTO.md](./docs/MANIFESTO.md)  
 
 > Humans retain the right to make meaningful decisions. AFAI is not a moral crusade—it’s a practical framework ensuring that as AI systems become powerful, human choice remains intact, measurable, and protected.
 
