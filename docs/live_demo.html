@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agency First AI (AFAI)</title>
+    <title>AFAI - Live Demo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -16,17 +16,26 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">AFAI</a>
+        <a class="navbar-brand" href="index.html">AFAI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="MANIFESTO.md">Manifesto</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Live Demo <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="documentation.html">Documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blog.html">Blog</a>
                 </li>
             </ul>
         </div>
@@ -34,9 +43,14 @@
 
     <main role="main" class="container">
         <div class="jumbotron">
-            <h1>Agency First AI (AFAI)</h1>
-            <p class="lead">A framework for prioritizing human agency in AI systems.</p>
-            <a class="btn btn-lg btn-primary" href="MANIFESTO.md" role="button">Read the Manifesto &raquo;</a>
+            <h1>Live Demo</h1>
+            <p class="lead">Run the AFAI demo and see the Agency Preservation Score (APS) in action.</p>
+            <button id="run-demo-btn" class="btn btn-lg btn-primary">Run Demo &raquo;</button>
+        </div>
+
+        <div id="demo-results" style="display: none;">
+            <h2>Demo Results</h2>
+            <pre><code id="demo-output"></code></pre>
         </div>
     </main>
 

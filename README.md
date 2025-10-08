@@ -14,6 +14,26 @@ Welcome to the **central hub for Agency First AI**, a framework and demonstratio
 
 ---
 
+## Website
+
+This project has a companion website built with GitHub Pages.
+
+**Live Website:** [https://AgencyFirstAI.github.io/afai-manifesto/](https://AgencyFirstAI.github.io/afai-manifesto/)
+
+### How to Set Up the Website
+
+To enable the GitHub Pages website for your fork of this repository, follow these steps:
+
+1.  Go to your repository's **Settings** page.
+2.  In the "Code and automation" section of the sidebar, click on **Pages**.
+3.  Under "Build and deployment", for the **Source**, select **Deploy from a branch**.
+4.  Under "Branch", select **main** (or your default branch) and choose the **/docs** folder.
+5.  Click **Save**.
+
+Your website should be live at the URL provided above within a few minutes.
+
+---
+
 ## Manifesto
 
 Read the full **Agency First AI Manifesto** here: [MANIFESTO.md](./MANIFESTO.md)  
