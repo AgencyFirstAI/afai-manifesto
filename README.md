@@ -65,3 +65,6 @@ cd afai-core
 # Run the demo
 python demo/run_demo.py
 ```
+
+## License 
+[MIT](LICENSE.txt)
