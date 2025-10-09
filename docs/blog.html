@@ -3,67 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFAI - Blog</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            padding-top: 5rem;
-        }
-        .jumbotron {
-            background-color: #f8f9fa;
-        }
-    </style>
+    <title>Blog - AFAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="index.html">AFAI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="MANIFESTO.md">Manifesto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="live_demo.html">Live Demo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="documentation.html">Documentation</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Blog <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">AFAI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MANIFESTO.md">Manifesto</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="documentation.html">Documentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="live_demo.html">Live Demo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="liam.html">Liam</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <main role="main" class="container">
-        <div class="jumbotron">
+    <main class="container mt-5 pt-5">
+        <div class="jumbotron-custom">
             <h1>AFAI Blog</h1>
-            <p class="lead">Thoughts and updates from the Agency First AI team.</p>
+            <p class="lead">Thoughts and updates on the development of Agency-First AI.</p>
         </div>
 
-        <div>
-            <h2><a href="blog/2025-10-09-understanding-the-agency-preservation-score.md">Understanding the Agency Preservation Score (APS)</a></h2>
-            <p><em>October 09, 2025</em></p>
-            <p>The Agency Preservation Score (APS) is at the heart of the Agency First AI (AFAI) framework. It's a quantifiable metric designed to measure the impact of an AI system on a user's ability to make their own choices...</p>
-        </div>
+        <div class="row mt-5">
+            <div class="col-lg-8 offset-lg-2">
+                
+                <!-- Blog Post 1 -->
+                <div class="card-custom">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="blog/2025-10-09-understanding-the-agency-preservation-score.md">Understanding the Agency Preservation Score (APS)</a></h3>
+                        <p class="card-meta">October 09, 2025</p>
+                        <p>The Agency Preservation Score (APS) is at the heart of the Agency First AI (AFAI) framework. It's a quantifiable metric designed to measure the impact of an AI system on a user's ability to make their own choices...</p>
+                    </div>
+                </div>
 
-        <hr>
+                <!-- Blog Post 2 -->
+                <div class="card-custom">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="blog/2025-10-08-the-importance-of-ai-agency.md">The Importance of AI Agency</a></h3>
+                        <p class="card-meta">October 08, 2025</p>
+                        <p>As artificial intelligence becomes increasingly intertwined with our daily lives, it's crucial that we consider the impact these powerful systems have on our ability to make our own choices...</p>
+                    </div>
+                </div>
 
-        <div>
-            <h2><a href="blog/2025-10-08-the-importance-of-ai-agency.md">The Importance of AI Agency</a></h2>
-            <p><em>October 08, 2025</em></p>
-            <p>As artificial intelligence becomes increasingly intertwined with our daily lives, it's crucial that we consider the impact these powerful systems have on our ability to make our own choices...</p>
+            </div>
         </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer class="container">
+        <p>&copy; 2025 Agency-First AI Manifesto. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

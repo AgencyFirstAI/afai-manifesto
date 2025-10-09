@@ -3,54 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agency First AI (AFAI)</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            padding-top: 5rem;
-        }
-        .jumbotron {
-            background-color: #f8f9fa;
-        }
-    </style>
+    <title>Agency-First AI (AFAI)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">AFAI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="MANIFESTO.md">Manifesto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="live_demo.html">Live Demo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="documentation.html">Documentation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
-                </li>
-            </ul>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">AFAI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MANIFESTO.md">Manifesto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="documentation.html">Documentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="live_demo.html">Live Demo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="liam.html">Liam</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <main role="main" class="container">
-        <div class="jumbotron">
-            <h1>Agency First AI (AFAI)</h1>
-            <p class="lead">A framework for prioritizing human agency in AI systems.</p>
-            <a class="btn btn-lg btn-primary" href="MANIFESTO.md" role="button">Read the Manifesto &raquo;</a>
+    <main class="container mt-5 pt-5">
+        <div class="jumbotron-custom">
+            <h1>Agency-First AI</h1>
+            <p class="lead">A practical framework for developing and auditing AI systems that respect human choice.</p>
+            <a class="btn btn-primary-custom btn-lg mt-3" href="MANIFESTO.md" role="button">Read the Manifesto</a>
+        </div>
+
+        <div class="row mt-5 text-center">
+            <div class="col-md-4">
+                <h3>Measure Agency</h3>
+                <p>Use the Agency Preservation Score (APS) to get a clear, auditable metric for your AI's impact on user agency.</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Build Trust</h3>
+                <p>Create transparent, explainable systems that empower users and build lasting trust in your products.</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Adopt Incrementally</h3>
+                <p>Follow our practical adoption pathways to integrate agency-first principles without rebuilding from scratch.</p>
+            </div>
         </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer class="container">
+        <p>&copy; 2025 Agency-First AI Manifesto. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

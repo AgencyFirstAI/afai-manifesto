@@ -1,0 +1,117 @@
+/* Custom Styles for AFAI Website */
+
+:root {
+    --primary-color: #0a4275;
+    --secondary-color: #0d6efd;
+    --dark-bg: #1a1a1a;
+    --light-text: #f8f9fa;
+    --card-bg: #2c2c2c;
+    --border-color: #444;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: var(--secondary-color) !important;
+}
+
+.nav-link {
+    color: var(--light-text) !important;
+    transition: color 0.2s;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+.jumbotron-custom {
+    background: linear-gradient(135deg, var(--primary-color), #1e5a9b);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.jumbotron-custom h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.jumbotron-custom .lead {
+    font-size: 1.25rem;
+}
+
+.card-custom {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card-custom .card-body {
+    padding: 2rem;
+}
+
+.card-custom .card-title a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-custom .card-title a:hover {
+    text-decoration: underline;
+}
+
+.card-custom .card-meta {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.btn-primary-custom {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-primary-custom:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.liam-prompt {
+    background-color: var(--card-bg);
+    border-left: 5px solid var(--secondary-color);
+    padding: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    border-radius: 0.5rem;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    text-align: center;
+    color: #aaa;
+}
