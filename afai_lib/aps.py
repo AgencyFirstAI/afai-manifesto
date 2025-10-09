@@ -1,111 +1,113 @@
 """
 Agency First AI (AFAI) - Agency Preservation Score (APS) Library
+
+This module provides the core functionality for calculating and auditing
+the Agency Preservation Score (APS).
 """
 
-def calculate_aps(consent, reversible):
+from dataclasses import asdict
+from .models import APSInput
+
+def calculate_weighted_aps(aps_input, weights):
     """
-    Calculates the Agency Preservation Score (APS) based on whether consent was given and whether the action is reversible.
+    Calculates a weighted Agency Preservation Score (APS) based on a structured input and corresponding weights.
 
     Args:
-        consent (bool): Whether the user gave informed consent for the action.
-        reversible (bool): Whether the action can be easily undone.
+        aps_input (APSInput): A structured data object containing the core and custom factors.
+        weights (dict): A dictionary where keys match the factor names in `aps_input`
+                        (e.g., 'consent', 'transparency', 'custom_factor_name')
+                        and values are the weights (float).
 
     Returns:
-        float: The Agency Preservation Score (APS) between 0.0 and 1.0.
+        tuple: A tuple containing the final APS score (float) and a dictionary
+               with the detailed breakdown of the calculation for auditing.
     """
-    base_score = 0.5
+    
+    all_factors = asdict(aps_input)
+    # Separate custom factors for clarity in the audit trail
+    custom_factors = all_factors.pop('custom_factors', {})
+    all_factors.update(custom_factors)
 
-    # Adjust score based on consent
-    if consent:
-        base_score += 0.25
-    else:
-        base_score -= 0.25
-
-    # Adjust score based on reversibility
-    if reversible:
-        base_score += 0.25
-    else:
-        base_score -= 0.25
-
-    # Ensure the score is within the 0-1 range
-    return max(0, min(1, round(base_score, 2)))
-
-def calculate_weighted_aps(factors, weights):
-    """
-    Calculates a weighted Agency Preservation Score (APS) based on a dictionary of factors and their corresponding weights.
-
-    Args:
-        factors (dict): A dictionary where keys are the names of the factors (e.g., "consent", "reversibility")
-                        and values are boolean or float values representing the factor's state.
-        weights (dict): A dictionary where keys are the names of the factors and values are the weights (float)
-                        to be applied to each factor.
-
-    Returns:
-        float: The weighted Agency Preservation Score (APS) between 0.0 and 1.0.
-    """
-    total_score = 0
+    weighted_scores = {}
     total_weight = 0
 
-    for factor, value in factors.items():
+    for factor, value in all_factors.items():
         if factor in weights:
             weight = weights[factor]
             total_weight += abs(weight)
             if isinstance(value, bool):
-                total_score += weight if value else -weight
-            else:
-                total_score += value * weight
+                # Convert boolean to 1 for True, -1 for False for scoring
+                score_value = 1 if value else -1
+                weighted_scores[factor] = score_value * weight
+            elif isinstance(value, (int, float)):
+                # For numeric values (like transparency), scale them from [0, 1] to [-1, 1]
+                score_value = 2 * value - 1
+                weighted_scores[factor] = score_value * weight
 
     if total_weight == 0:
-        return 0.5  # Default score if no weights are provided
+        return 0.5, {"error": "No matching weights provided."}
 
+    total_score = sum(weighted_scores.values())
+    
     # Normalize the score to be between -1 and 1
     normalized_score = total_score / total_weight
 
     # Shift the score to be between 0 and 1
     final_score = (normalized_score + 1) / 2
 
-    return max(0, min(1, round(final_score, 2)))
+    audit_details = {
+        "factors": all_factors,
+        "weights": weights,
+        "weighted_scores": weighted_scores,
+        "total_score": total_score,
+        "total_weight": total_weight,
+        "normalized_score": normalized_score,
+        "final_score": final_score
+    }
 
-def generate_aps_report(results):
+    return max(0, min(1, round(final_score, 2))), audit_details
+
+def generate_aps_audit_trail(agent_id, action, aps_score, audit_details):
     """
-    Generates a text-based report of Agency Preservation Scores (APS).
+    Generates a detailed, human-readable audit trail for an APS calculation.
 
     Args:
-        results (list): A list of dictionaries, where each dictionary contains the following keys:
-                        'agent_id', 'action', 'aps_score', 'reversible', 'consent'.
+        agent_id (str): The identifier for the AI agent.
+        action (str): A description of the action being evaluated.
+        aps_score (float): The final calculated APS score.
+        audit_details (dict): The detailed breakdown from the `calculate_weighted_aps` function.
 
     Returns:
-        str: A formatted string containing the APS report.
+        str: A formatted string containing the detailed APS audit trail.
     """
-    report = """--- AFAI Agency Preservation Score (APS) Report ---
+    report = f"--- AFAI Agency Preservation Score (APS) Audit Trail ---\n\n"
+    report += f"Agent ID: {agent_id}\n"
+    report += f"Action:   {action}\n"
+    report += f"Final APS Score: {aps_score:.2f}\n\n"
+    report += "--- Calculation Breakdown ---\n"
+    report += "{:<20} {:<10} {:<10} {:<15}\n".format("Factor", "Value", "Weight", "Weighted Score")
+    report += "-" * 55 + "\n"
 
-"""
-    report += "{:<10} {:<15} {:<10} {:<12} {:<10}\n".format("Agent ID", "Action", "APS Score", "Reversible", "Consent")
-    report += "-" * 60 + "\n"
+    factors = audit_details.get('factors', {})
+    weights = audit_details.get('weights', {})
+    weighted_scores = audit_details.get('weighted_scores', {})
 
-    for result in results:
-        report += "{:<10} {:<15} {:<10.2f} {:<12} {:<10}\n".format(
-            result['agent_id'],
-            result['action'],
-            result['aps_score'],
-            str(result['reversible']),
-            str(result['consent'])
-        )
+    for factor in factors.keys():
+        if factor in weights:
+            value = factors[factor]
+            weight = weights[factor]
+            score = weighted_scores.get(factor, 0)
+            report += "{:<20} {:<10} {:<10} {:<15.2f}\n".format(
+                factor,
+                str(value),
+                f"{weight:.2f}",
+                score
+            )
 
-    report += "\n--- End of Report ---\n"
+    report += "\n--- Summary ---\n"
+    report += f"Total Score:      {audit_details.get('total_score', 0):.2f}\n"
+    report += f"Total Weight:     {audit_details.get('total_weight', 0):.2f}\n"
+    report += f"Normalized Score: {audit_details.get('normalized_score', 0):.2f} (Total Score / Total Weight)\n"
+    report += f"Final Score:      {audit_details.get('final_score', 0):.2f} ((Normalized Score + 1) / 2)\n"
+    report += "\n--- End of Audit Trail ---\n"
     return report
-
-def calculate_custom_aps(factors, calculation_function):
-    """
-    Calculates the Agency Preservation Score (APS) using a custom, user-defined function.
-
-    Args:
-        factors (dict): A dictionary of factors to be used in the calculation.
-        calculation_function (function): A function that takes a dictionary of factors as input
-                                         and returns the APS score (a float between 0.0 and 1.0).
-
-    Returns:
-        float: The Agency Preservation Score (APS) between 0.0 and 1.0.
-    """
-    aps_score = calculation_function(factors)
-    return max(0, min(1, round(aps_score, 2)))
