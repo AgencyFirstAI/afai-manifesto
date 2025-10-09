@@ -1,83 +1,74 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFAI - Documentation</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            padding-top: 5rem;
-        }
-        .jumbotron {
-            background-color: #f8f9fa;
-        }
-    </style>
+    <title>Documentation - AFAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="index.html">AFAI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="MANIFESTO.md">Manifesto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="live_demo.html">Live Demo</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Documentation <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
-                </li>
-            </ul>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">AFAI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="MANIFESTO.html">Manifesto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="documentation.html">Documentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="live_demo.html">Live Demo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="liam.html">Liam</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <main role="main" class="container">
-        <div class="jumbotron">
+    <main class="container mt-5 pt-5">
+        <div class="jumbotron-custom">
             <h1>AFAI Library Documentation</h1>
             <p class="lead">Learn how to use the AFAI library to measure agency in your own projects.</p>
         </div>
 
-        <div>
-            <h2>calculate_aps(consent, reversible)</h2>
-            <p>Calculates the Agency Preservation Score (APS) based on whether consent was given and whether the action is reversible.</p>
-            <h4>Arguments:</h4>
-            <ul>
-                <li><code>consent</code> (bool): Whether the user gave informed consent for the action.</li>
-                <li><code>reversible</code> (bool): Whether the action can be easily undone.</li>
-            </ul>
-            <h4>Returns:</h4>
-            <p><code>float</code>: The Agency Preservation Score (APS) between 0.0 and 1.0.</p>
-            <h4>Example:</h4>
-            <pre><code>from afai_lib.aps import calculate_aps
+        <div class="row mt-5">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="card-custom">
+                    <div class="card-body">
+                        <h2 class="card-title">calculate_aps(consent, reversible)</h2>
+                        <p>Calculates the Agency Preservation Score (APS) based on whether consent was given and whether the action is reversible.</p>
+                        <h4>Arguments:</h4>
+                        <ul>
+                            <li><code>consent</code> (bool): Whether the user gave informed consent for the action.</li>
+                            <li><code>reversible</code> (bool): Whether the action can be easily undone.</li>
+                        </ul>
+                        <h4>Returns:</h4>
+                        <p><code>float</code>: The Agency Preservation Score (APS) between 0.0 and 1.0.</p>
+                        <h4>Example:</h4>
+                        <pre><code>from afai_lib.aps import calculate_aps
 
 aps_score = calculate_aps(consent=True, reversible=False)
 print(aps_score)  # Output: 0.75</code></pre>
-        </div>
+                    </div>
+                </div>
 
-        <hr>
-
-        <div>
-            <h2>calculate_weighted_aps(factors, weights)</h2>
-            <p>Calculates a weighted Agency Preservation Score (APS) based on a dictionary of factors and their corresponding weights.</p>
-            <h4>Arguments:</h4>
-            <ul>
-                <li><code>factors</code> (dict): A dictionary where keys are the names of the factors (e.g., "consent", "reversibility") and values are boolean or float values representing the factor's state.</li>
-                <li><code>weights</code> (dict): A dictionary where keys are the names of the factors and values are the weights (float) to be applied to each factor.</li>
-            </ul>
-            <h4>Returns:</h4>
-            <p><code>float</code>: The weighted Agency Preservation Score (APS) between 0.0 and 1.0.</p>
-            <h4>Example:</h4>
-            <pre><code>from afai_lib.aps import calculate_weighted_aps
+                <div class="card-custom">
+                    <div class="card-body">
+                        <h2 class="card-title">calculate_weighted_aps(factors, weights)</h2>
+                        <p>Calculates a weighted Agency Preservation Score (APS) based on a dictionary of factors and their corresponding weights.</p>
+                        <h4>Arguments:</h4>
+                        <ul>
+                            <li><code>factors</code> (dict): A dictionary where keys are the names of the factors (e.g., "consent", "reversibility") and values are boolean or float values representing the factor's state.</li>
+                            <li><code>weights</code> (dict): A dictionary where keys are the names of the factors and values are the weights (float) to be applied to each factor.</li>
+                        </ul>
+                        <h4>Returns:</h4>
+                        <p><code>float</code>: The weighted Agency Preservation Score (APS) between 0.0 and 1.0.</p>
+                        <h4>Example:</h4>
+                        <pre><code>from afai_lib.aps import calculate_weighted_aps
 
 factors = {
     "consent": True,
@@ -93,11 +84,16 @@ weights = {
 
 aps_score = calculate_weighted_aps(factors, weights)
 print(aps_score)  # Output: 0.81</code></pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer class="container">
+        <p>&copy; 2025 Agency-First AI Manifesto. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
