@@ -1,30 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFAI in Action: A Practical Guide to the Demo - AFAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
 
----
-layout: post
-title:  "AFAI in Action: A Practical Guide to the Demo"
-date:   2025-10-11 13:00:00 -0500
-categories: afai
----
+    <div id="navbar-placeholder" data-nav-path="../includes/nav.html"></div>
 
-The Agency First AI (AFAI) framework is more than just a theoretical concept. It's a practical tool for building more responsible and ethical AI systems. To help you understand how AFAI works in practice, we've created a demo harness that simulates an AI-human interaction and calculates the Agency Preservation Score (APS) in real-time.
+    <main class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="card-custom">
+                    <div class="card-body">
+                        <h1>AFAI in Action: A Practical Guide to the Demo</h1>
+                        <p class="card-meta">October 11, 2025</p>
+                        <hr>
+                        <p>The Agency First AI (AFAI) framework is more than just a theoretical concept. It's a practical tool for building more responsible and ethical AI systems. To help you understand how AFAI works in practice, we've created a demo harness that simulates an AI-human interaction and calculates the Agency Preservation Score (APS) in real-time.</p>
+                        <p>In this post, we'll walk you through the process of running the demo and interpreting its output. Before you begin, make sure you have Python installed on your system.</p>
+                        <p>First, clone the AFAI repository from GitHub:</p>
+                        <pre><code>git clone https://github.com/AgencyFirstAI/afai-manifesto.git</code></pre>
+                        <p>Next, navigate to the <code>demo</code> directory and run the <code>run_demo.py</code> script:</p>
+                        <pre><code>cd afai-manifesto/demo
+python run_demo.py</code></pre>
+                        <p>The script will simulate a scenario in which an AI agent is assisting a user with a task. As the simulation runs, you'll see the APS being calculated and displayed in the console. The output will show you how the APS changes in response to different types of AI behavior.</p>
+                        <p>By experimenting with the demo, you can gain a deeper understanding of the AFAI framework and the importance of agency preservation. We encourage you to explore the code, modify the simulation parameters, and see for yourself how different AI design choices can impact human agency.</p>
+                        <p>In our next post, we'll dive deeper into the <code>afai_lib</code> library and show you how you can use it to integrate AFAI into your own projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-In this post, we'll walk you through the process of running the demo and interpreting its output. Before you begin, make sure you have Python installed on your system.
+    <footer class="container">
+        <p>&copy; 2025 Agency-First AI Manifesto. All rights reserved.</p>
+    </footer>
 
-First, clone the AFAI repository from GitHub:
-
-```bash
-git clone https://github.com/AgencyFirstAI/afai-manifesto.git
-```
-
-Next, navigate to the `demo` directory and run the `run_demo.py` script:
-
-```bash
-cd afai-manifesto/demo
-python run_demo.py
-```
-
-The script will simulate a scenario in which an AI agent is assisting a user with a task. As the simulation runs, you'll see the APS being calculated and displayed in the console. The output will show you how the APS changes in response to different types of AI behavior.
-
-By experimenting with the demo, you can gain a deeper understanding of the AFAI framework and the importance of agency preservation. We encourage you to explore the code, modify the simulation parameters, and see for yourself how different AI design choices can impact human agency.
-
-In our next post, we'll dive deeper into the `afai_lib` library and show you how you can use it to integrate AFAI into your own projects.
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
